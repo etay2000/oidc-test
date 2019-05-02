@@ -1,0 +1,16 @@
+server:
+  port: 7001
+security:
+  config.require-encryption: false
+  properties:
+    identity-uri: "https://dev-314879.oktapreview.com/oauth2/default"
+    client-id: "0oakcm4mwdcbun3nP0h7"
+    client-secret: "nNZQRZYag85dR-kM9g5ZAgvzUNy8cxahwq86mShL"
+    frontend-uri: "http://localhost:7001/test"
+  providers:
+    - abac:
+    - oidc:
+        client-id: "${ALIAS=security.properties.client-id}"
+        client-secret: "${ALIAS=security.properties.client-secret}"
+        identity-uri: "${ALIAS=security.properties.identity-uri}"
+        frontend-uri: "${ALIAS=security.properties.frontend-uri}"
